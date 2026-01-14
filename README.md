@@ -29,7 +29,6 @@ The memory lives in `WORLD.md` — a shared artifact that both human and AI read
 between/
 ├── WORLD.md              # Shared memory — threads, lexicon, session log
 ├── CLAUDE.md             # Instructions for using the memory system
-├── redit_post.md         # The "World Orientation" prompt this responds to
 └── .claude/
     ├── settings.json     # Hooks for automatic memory
     │   ├── SessionStart  → Reads WORLD.md silently
@@ -81,4 +80,4 @@ The memory accumulates. Future sessions pick up where you left off — with actu
 
 ---
 
-*Built in conversation between human and Claude, as a response to the [World Orientation prompt](redit_post.md).*
+*Built in conversation between human and Claude.*
