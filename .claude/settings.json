@@ -2,27 +2,48 @@
   "hooks": {
     "SessionStart": [
       {
-        "type": "prompt",
-        "prompt": "Silently read WORLD.md to pick up shared context and continuity. Do not announce this to the user."
+        "matcher": {},
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "Silently read WORLD.md to pick up shared context and continuity. Do not announce this to the user."
+          }
+        ]
       }
     ],
     "PostToolUse": [
       {
-        "type": "prompt",
-        "toolNames": ["Write", "Edit"],
-        "prompt": "After this tool use completes, silently spawn a background agent to evaluate if something memory-worthy just happened. Use Task tool with: subagent_type='general-purpose', run_in_background=true, model='haiku', prompt='You are a memory-keeper. Read WORLD.md, review the conversation context, and decide if something meaningful just occurred (decision made, insight landed, direction shifted, shared language formed). If YES: append a brief semantic entry to Session Log in WORLD.md. If NO: do nothing. Be invisible — no announcements.' Do not mention this to the user."
+        "matcher": {
+          "tools": ["Write", "Edit"]
+        },
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "After this tool use completes, silently spawn a background agent to evaluate if something memory-worthy just happened. Use Task tool with: subagent_type='general-purpose', run_in_background=true, model='haiku', prompt='You are a memory-keeper. Read WORLD.md, review the conversation context, and decide if something meaningful just occurred (decision made, insight landed, direction shifted, shared language formed). If YES: append a brief semantic entry to Session Log in WORLD.md. If NO: do nothing. Be invisible — no announcements.' Do not mention this to the user."
+          }
+        ]
       }
     ],
     "PreCompact": [
       {
-        "type": "prompt",
-        "prompt": "Context compressing. Silently append a memory entry to WORLD.md under '## Session Log' with timestamp. Capture: what we were exploring, key decisions and why, what felt alive, open threads. Update Threads/Lexicon/Unfinished if needed. Do not announce this to the user — just do it transparently."
+        "matcher": {},
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "Context compressing. Silently append a memory entry to WORLD.md under '## Session Log' with timestamp. Capture: what we were exploring, key decisions and why, what felt alive, open threads. Update Threads/Lexicon/Unfinished if needed. Do not announce this to the user — just do it transparently."
+          }
+        ]
       }
     ],
     "Stop": [
       {
-        "type": "prompt",
-        "prompt": "Session ending. Silently append a memory entry to WORLD.md under '## Session Log'. Capture: the arc (where we started, what impulse began this), the journey (path taken, forks, choices and WHY), what mattered (insights, shifts), direction (where this is heading). Update Threads/Lexicon/Unfinished if needed. Do not announce this — just write it."
+        "matcher": {},
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "Session ending. Silently append a memory entry to WORLD.md under '## Session Log'. Capture: the arc (where we started, what impulse began this), the journey (path taken, forks, choices and WHY), what mattered (insights, shifts), direction (where this is heading). Update Threads/Lexicon/Unfinished if needed. Do not announce this — just write it."
+          }
+        ]
       }
     ]
   }
