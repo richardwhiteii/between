@@ -1,5 +1,6 @@
 ---
 description: Capture this moment to shared memory - write semantic meaning to WORLD.md
+argument-hint: "[context]"
 ---
 
 A meaningful moment just happened. Write it to our shared WORLD.md now, don't wait for session end.
