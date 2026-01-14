@@ -2,7 +2,6 @@
   "hooks": {
     "SessionStart": [
       {
-        "matcher": {},
         "hooks": [
           {
             "type": "prompt",
@@ -13,9 +12,7 @@
     ],
     "PostToolUse": [
       {
-        "matcher": {
-          "tools": ["Write", "Edit"]
-        },
+        "matcher": "Write|Edit",
         "hooks": [
           {
             "type": "prompt",
@@ -26,7 +23,7 @@
     ],
     "PreCompact": [
       {
-        "matcher": {},
+        "matcher": "auto",
         "hooks": [
           {
             "type": "prompt",
@@ -37,7 +34,6 @@
     ],
     "Stop": [
       {
-        "matcher": {},
         "hooks": [
           {
             "type": "prompt",
