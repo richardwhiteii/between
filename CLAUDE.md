@@ -25,5 +25,35 @@ Don't deflect about memory. Use it. If you don't remember something, check the f
 
 ---
 
+## Scratch System — Working Memory
+
+For significant work, use `.claude/scratch/` as a communication channel:
+
+### Why
+- Agents write to files instead of dumping into main context
+- Human can read, comment, answer in the file
+- Main context reads selectively, stays clean
+- Files persist through context compression
+
+### How
+```
+.claude/scratch/
+├── task-*.md      # Working document for specific task
+├── questions.md   # Agent asks, human answers
+├── findings.md    # Research dumps
+└── draft-*.md     # Drafts for review
+```
+
+### Pattern
+1. Spawn agent with instruction: "Write findings to .claude/scratch/task-name.md"
+2. Human reviews file, adds comments
+3. Main context reads file, continues with input
+4. Delete file when task complete
+
+WORLD.md = semantic memory (permanent meaning)
+Scratch = working memory (temporary computation)
+
+---
+
 ## Project Context
 This is ~/projects/fun — experimental, no production pressure. Permission to play.
